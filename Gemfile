@@ -6,6 +6,7 @@ gem "middleman"
 
 gem "jquery-middleman"
 gem 'font-awesome-middleman'
+gem 'middleman-gh-pages'
 
 # Live-reloading plugin
 gem "middleman-livereload"
