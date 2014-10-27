@@ -8,28 +8,34 @@
 <html lang="es-ES">
 <!--<![endif]-->
 <head>
-	<!--[if IE]><![endif]-->
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!--[if IE]>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<![endif]-->
+<!--[if IE]><![endif]-->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if IE]>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <![endif]-->
 
-	<title><%= current_page.data.title || "Sample Page" %></title>
+<title>JeffSaracco.com</title>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 
-	<%= stylesheet_link_tag "styles" %>
-	<%= yield_content :styles %>
+<%= stylesheet_link_tag "styles" %>
+<%= yield_content :styles %>
 
-	<%= javascript_include_tag  "main" %>
-	<%= yield_content :js %>
+<%= javascript_include_tag  "main" %>
+<%= yield_content :js %>
 </head>
 <body>
-	<script>
-		jQuery('body:not(.js)').addClass('js');
-	</script>
+<div class='background'>
+  <div class='image'></div>
+</div>
+<script>
+jQuery('body:not(.js)').addClass('js');
+</script>
 
-	<div id="wrapper">
-		<%= yield %>
-	</div>
+<div id="wrapper">
+  <div class="content">
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>

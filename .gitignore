@@ -4,3 +4,4 @@ Gemfile.lock
 /.sass-cache
 /build
 /components
+.DS_Store
