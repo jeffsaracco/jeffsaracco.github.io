@@ -50,13 +50,18 @@ body {
 
     .circular {
       margin: 0 auto;
-      width: 200px;
-      height: 200px;
+      max-width: 200px;
       border-radius: 100px;
       -webkit-border-radius: 100px;
       -moz-border-radius: 100px;
       background: url(images/jeff.jpg) no-repeat;
       background-position: center;
+
+      &:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+      }
     }
   }
 
