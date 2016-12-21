@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "bourbon": "~4.0.2",
-    "neat": "~1.6.0",
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "neat": "~1.6.0"
   }
 }

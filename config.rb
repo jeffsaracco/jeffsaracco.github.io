@@ -3,7 +3,7 @@ activate :livereload
 set :css_dir, 'css'
 set :js_dir, 'js'
 set :images_dir, 'images'
-set :fonts_dir,  "fonts-folder"
+set :fonts_dir,  "fonts"
 
 compass_config do |config|
   config.add_import_path "./components"
