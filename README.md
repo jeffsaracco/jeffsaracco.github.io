@@ -3,11 +3,9 @@
 This is a template for [Middleman](http://middlemanapp.com) featuring:
 
 * [Bower](http://bower.io/ "BOWER: A package manager for the web")
-* [jQuery](http://en.wikipedia.org/wiki/Query "Query - Wikipedia, the free encyclopedia")
 * [Bourbon](http://bourbon.io "Bourbon - A Sass Mixin Library")
 * [Neat](http://neat.bourbon.io "Bourbon Neat")
 * [Sass](http://sass-lang.com "Sass: Syntactically Awesome Style Sheets")
-* [Coffeescript](http://coffeescript.org/ "CoffeeScript")
 
 ## Installation
 
