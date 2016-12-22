@@ -1,9 +1,6 @@
-@import "bourbon";
-@import "neat";
-
 .background {
   .image {
-    background-image: url(images/woods.jpg);
+    background-image: url(/images/woods.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -36,12 +33,19 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 
   #wrapper {
-    @include outer-container;
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .content {
-    @include span-columns(6);
-    @include shift(3);
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+    margin-left: 25.58941%;
+    text-align: center;
+
     text-align: center;
 
     h1 {
@@ -54,7 +58,7 @@ body {
       border-radius: 100px;
       -webkit-border-radius: 100px;
       -moz-border-radius: 100px;
-      background: url(images/jeff.jpg) no-repeat;
+      background: url(/images/jeff.jpg) no-repeat;
       background-position: center;
 
       &:before {
@@ -62,6 +66,10 @@ body {
         display: block;
         padding-top: 100%;
       }
+    }
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 

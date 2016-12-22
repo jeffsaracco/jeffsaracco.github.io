@@ -2,11 +2,9 @@
 # the following line to use "https"
 source 'http://rubygems.org'
 
-gem "middleman", "~> 3.4.1"
+gem "middleman"
 
-gem "jquery-middleman"
-gem 'font-awesome-middleman'
-gem 'middleman-deploy'
+gem 'middleman-deploy', '~> 2.0.0.pre.alpha'
 
 # Live-reloading plugin
 gem "middleman-livereload"

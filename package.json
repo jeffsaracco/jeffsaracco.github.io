@@ -1,5 +1,25 @@
 {
+  "main": "./source/javascripts/all.js",
+  "scripts": {
+    "start": "$(npm root)/.bin/webpack --watch -d --progress --color",
+    "build": "$(npm root)/.bin/webpack --bail -p"
+  },
   "dependencies": {
     "bower": "^1.8.0"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-polyfill": "^6.20.0",
+    "css-loader": "^0.26.1",
+    "exports-loader": "^0.6.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "imports-loader": "^0.7.0",
+    "node-sass": "^4.1.1",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0"
   }
 }
