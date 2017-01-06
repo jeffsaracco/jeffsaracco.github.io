@@ -1,0 +1,48 @@
+nav:
+  Home: /
+  About: /about/
+  Archives: /archives/
+
+customize:
+    gravatar:
+        email: jeffsaracco@gmail.com
+    logo:
+        enabled: true
+        width: 50
+        height: 50
+        url: /images/logo.png
+        gravatar: true
+    favicon:
+      # eg. generate with http://realfavicongenerator.net/
+      desktop:
+        url: /images/favicon.ico
+        gravatar: true
+      android:
+        url: /images/favicon-192x192.png
+        gravator: true
+      apple:
+        url: /images/apple-touch-icon.png
+        gravator: true
+    social_links:
+        github: http://github.com/jeffsaracco
+        twitter: http://twitter.com/jsaracco
+        facebook: https://www.facebook.com/jeffsaracco
+        linkedin: https://www.linkedin.com/in/jeffsaracco
+    post_count: 5
+    highlight: rainbow
+
+# RSS
+rss: false
+
+# Plugins
+plugins:
+    disqus_shortname: # Disqus Comments Shortname
+    google_analytics: UA-17462061-1
+
+# Miscellaneous
+miscellaneous:
+    open_graph: # see http://ogp.me
+        fb_app_id:
+        fb_admins:
+        twitter_id:
+        google_plus:
