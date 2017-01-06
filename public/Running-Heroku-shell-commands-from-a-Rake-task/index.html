@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Running Heroku shell commands from a Rake task | Jeff Saracco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Running an app on Heroku has many benefits, most of which I will not go into here.
+I was trying to make a rake task to pull down my latest backup from the pgbackups Heroku addon, as well as restore it">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Running Heroku shell commands from a Rake task">
+<meta property="og:url" content="http://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/index.html">
+<meta property="og:site_name" content="Jeff Saracco">
+<meta property="og:description" content="Running an app on Heroku has many benefits, most of which I will not go into here.
+I was trying to make a rake task to pull down my latest backup from the pgbackups Heroku addon, as well as restore it">
+<meta property="og:updated_time" content="2017-01-06T14:28:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Running Heroku shell commands from a Rake task">
+<meta name="twitter:description" content="Running an app on Heroku has many benefits, most of which I will not go into here.
+I was trying to make a rake task to pull down my latest backup from the pgbackups Heroku addon, as well as restore it">
+  
+    <link rel="alternate" href="/atom.xml" title="Jeff Saracco" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jeff Saracco</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://jeffsaracco.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Running-Heroku-shell-commands-from-a-Rake-task" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Running-Heroku-shell-commands-from-a-Rake-task/" class="article-date">
+  <time datetime="2014-06-27T13:17:35.000Z" itemprop="datePublished">2014-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Running Heroku shell commands from a Rake task
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Running an app on Heroku has many benefits, most of which I will not go into here.</p>
+<p>I was trying to make a rake task to pull down my latest backup from the <a href="https://addons.heroku.com/pgbackups" target="_blank" rel="external">pgbackups Heroku addon</a>, as well as restore it locally.</p>
+<p>My rake task looked something like this:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">namespace <span class="symbol">:db</span> <span class="keyword">do</span></div><div class="line">  desc <span class="string">"Fetch the latest backup from heroku"</span></div><div class="line">  task <span class="symbol">:fetch</span> =&gt; [<span class="symbol">:environment</span>] <span class="keyword">do</span></div><div class="line">    app = <span class="string">"&lt;YOU PRODUCTION APP HERE&gt;"</span></div><div class="line">    url = <span class="string">`heroku pgbackups:url -a <span class="subst">#&#123;app&#125;</span>`</span></div><div class="line">    db_prefix = app.gsub(<span class="string">'-'</span>,<span class="string">'_'</span>)</div><div class="line">    fname = <span class="string">"<span class="subst">#&#123;db_prefix&#125;</span>_<span class="subst">#&#123;Time.now.strftime(<span class="string">"%Y%m%d"</span>)&#125;</span>.postgres"</span></div><div class="line">    puts <span class="string">"curl -o <span class="subst">#&#123;fname&#125;</span> '<span class="subst">#&#123;url&#125;</span>'"</span></div><div class="line">    <span class="string">`curl -o <span class="subst">#&#123;fname&#125;</span> "<span class="subst">#&#123;url&#125;</span>"`</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  desc <span class="string">"Import a dbfile into the development database on the local system"</span></div><div class="line">  task <span class="symbol">:import</span> =&gt; [<span class="symbol">:environment</span>] <span class="keyword">do</span></div><div class="line">    dbfile = ENV[<span class="string">'dbfile'</span>]</div><div class="line">    <span class="keyword">if</span> dbfile.blank? <span class="params">||</span> !File.exists?(dbfile)</div><div class="line">      puts <span class="string">"You need to specify the database file to import with dbfile=&lt;filename&gt;"</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">      <span class="string">`pg_restore --verbose --clean --no-acl --no-owner -h localhost -d &lt;YOUR LOCAL DB HERE&gt; <span class="subst">#&#123;dbfile&#125;</span>`</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  desc <span class="string">"Sanitize user data"</span></div><div class="line">  task <span class="symbol">:sanitize_user_data</span> =&gt; [<span class="symbol">:environment</span>] <span class="keyword">do</span></div><div class="line">    User.all.each <span class="keyword">do</span> <span class="params">|u|</span></div><div class="line">      u.email = <span class="string">"<span class="subst">#&#123;u.email&#125;</span>.fake"</span></div><div class="line">      u.password = <span class="string">'password'</span></div><div class="line">      u.password_confirmation = <span class="string">'password'</span></div><div class="line">      u.save</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>However, whenever I ran it I kept getting errors like</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Gemfile syntax error: (Bundler::GemfileError)</div><div class="line">Gemfile:6: syntax error, unexpected <span class="string">':'</span>, expecting <span class="variable">$end</span></div><div class="line">gem <span class="string">'activeadmin'</span>, github: <span class="string">'gregbell/active_admin'</span>, branch: <span class="string">'rails4'</span></div><div class="line">                          ^</div></pre></td></tr></table></figure>
+<p>I could NOT figure out what was happening. I stumbled upon <a href="https://github.com/heroku/heroku/issues/617" target="_blank" rel="external">an issue on the Heroku github page</a> in which it is suggested to wrap the calls in <code>Bundler.with_clean_env</code> block</p>
+<p>The change was to make the fetch task look like this:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">desc <span class="string">"Fetch the latest backup from heroku"</span></div><div class="line">task <span class="symbol">:fetch</span> =&gt; [<span class="symbol">:environment</span>] <span class="keyword">do</span></div><div class="line">  Bundler.with_clean_env <span class="keyword">do</span></div><div class="line">    app = <span class="string">"&lt;YOU PRODUCTION APP HERE&gt;"</span></div><div class="line">    url = <span class="string">`heroku pgbackups:url -a <span class="subst">#&#123;app&#125;</span>`</span></div><div class="line">    db_prefix = app.gsub(<span class="string">'-'</span>,<span class="string">'_'</span>)</div><div class="line">    fname = <span class="string">"<span class="subst">#&#123;db_prefix&#125;</span>_<span class="subst">#&#123;Time.now.strftime(<span class="string">"%Y%m%d"</span>)&#125;</span>.postgres"</span></div><div class="line">    puts <span class="string">"curl -o <span class="subst">#&#123;fname&#125;</span> '<span class="subst">#&#123;url&#125;</span>'"</span></div><div class="line">    <span class="string">`curl -o <span class="subst">#&#123;fname&#125;</span> "<span class="subst">#&#123;url&#125;</span>"`</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>All is well now and I can backup my files successfully from Heroku.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/" data-id="cixlwcunp00070vjtmfgdsizi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/On-Code-Cleanliness-and-Readability/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          On Code Cleanliness and Readability
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Ruby-on-Rails-polymorphic-user-model-with-devise-authentication/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Ruby on Rails polymorphic user model with devise authentication</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Improvements-to-BigVimbox-com/">Improvements to BigVimbox.com</a>
+          </li>
+        
+          <li>
+            <a href="/Happy-git-Trees/">Happy (git) Trees</a>
+          </li>
+        
+          <li>
+            <a href="/On-Code-Cleanliness-and-Readability/">On Code Cleanliness and Readability</a>
+          </li>
+        
+          <li>
+            <a href="/Running-Heroku-shell-commands-from-a-Rake-task/">Running Heroku shell commands from a Rake task</a>
+          </li>
+        
+          <li>
+            <a href="/Ruby-on-Rails-polymorphic-user-model-with-devise-authentication/">Ruby on Rails polymorphic user model with devise authentication</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Jeff Saracco<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

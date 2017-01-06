@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Jeff Saracco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Jeff Saracco">
+<meta property="og:url" content="http://jeffsaracco.com/index.html">
+<meta property="og:site_name" content="Jeff Saracco">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jeff Saracco">
+  
+    <link rel="alternate" href="/atom.xml" title="Jeff Saracco" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jeff Saracco</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://jeffsaracco.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Improvements-to-BigVimbox-com" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Improvements-to-BigVimbox-com/" class="article-date">
+  <time datetime="2015-09-29T13:10:00.000Z" itemprop="datePublished">2015-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Improvements-to-BigVimbox-com/">Improvements to BigVimbox.com</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Just wanted to give an update on some improvements I recently made to <a href="http://bigvimbox.com" target="_blank" rel="external">bigvimbox.com</a>:</p>
+<ul>
+<li>Updated to the latest <a href="https://github.com/ajaxorg/ace" target="_blank" rel="external">Ace editor</a></li>
+<li>Switched to markdown mode by default instead of text mode. This provides small improvements in the color scheme to show where the markup would be</li>
+<li>Added a handler for the <code>:w</code> vim command: This will save the contents of your bigvimbox to local storage so that if you close the tab or your browser restarts you won’t lose your notes.</li>
+</ul>
+<p>Since I do my regular development in Vim, it’s second nature for me to always hit <code>:w</code> when I’m done editing something. The problem was in bigvimbox.com, I would hit that and nothing would happen; it felt very unfulfilling, so I “scratched my own itch” so to say.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jeffsaracco.com/Improvements-to-BigVimbox-com/" data-id="cixlwcuma00040vjtd3hfcwz2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Happy-git-Trees" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Happy-git-Trees/" class="article-date">
+  <time datetime="2014-12-04T14:12:06.000Z" itemprop="datePublished">2014-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Happy-git-Trees/">Happy (git) Trees</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>originally posted on the Intridea blog here: <a href="http://www.intridea.com/blog/2014/12/4/happy-git-trees" target="_blank" rel="external">http://www.intridea.com/blog/2014/12/4/happy-git-trees</a></em></p>
+<p><img src="http://3.bp.blogspot.com/-euwIyl4tzDE/UjYU3GBaLgI/AAAAAAAAAQo/3V1b37kuISI/s1600/o-BOB-ROSS-facebook.jpg" alt="Bob Ross"></p>
+<p><br>We all know Bob Ross (above) and his fascination with “Happy Little Trees” (or maybe that’s my fascination). In any case, we can all take some advice from Bob and keep our Git trees happy.</p>
+<p>If you took a look at your current project’s git tree (through a tool maybe like <a href="http://gitx.frim.nl/" target="_blank" rel="external">Gitx</a>) I bet it would look something like this: </p>
+<p><img src="https://i.stack.imgur.com/r1wP7.png" alt="Git tree"></p>
+<p>Now I don’t know about you, but that is really hard for me to follow. I can get the general picture, that there are some branches that merged back into master, but then there’s some branching off of branches and merges between branches; I can’t really tell what story the git tree is trying to tell.</p>
+<h4 id="Why-do-we-care-about-“Happy-Trees”"><a href="#Why-do-we-care-about-“Happy-Trees”" class="headerlink" title="Why do we care about “Happy Trees”?"></a>Why do we care about “Happy Trees”?</h4><p>It is my view of git that all of your commits should tell a story of new functionality. This lets your coworkers or, as in the case of Intridea, clients see very plainly the set of commits that led to a feature being added to the application. It potentially lets less experienced developers see what steps you took to add a feature, and shows your train of thought on how you went from 0 to feature (hero).</p>
+<p>Essentially, keeping a happy and clean git tree is about communication.</p>
+<h4 id="What-does-a-Happy-git-tree-look-like"><a href="#What-does-a-Happy-git-tree-look-like" class="headerlink" title="What does a Happy (git) tree look like?"></a>What does a Happy (git) tree look like?</h4><p>Great question! Everyone has their own opinions on what a happy and clean git tree looks like (well, some have no opinion at all); this is my opinion on what a happy and clean tree might look like:</p>
+<p><img src="https://dl.dropboxusercontent.com/u/539427/Screenshot%202014-11-20%2014.59.44.png" alt="Happy (git) Tree"></p>
+<p>I created this by just initializing a blank git repository and making some commits on master and two different branches. As you can see, it’s clearly communicated what work occured on the branch and what commits happened directly on master. This makes it very easy to track down a potential bug, and which commit or merge may have caused it. Also, this makes it very easy to revert an entire feature should it no longer be wanted or if it’s causing bugs. All you need to do is revert the merge commit and like magic, the feature is gone.</p>
+<h4 id="How-do-‘I’-make-my-own-Happy-git-trees"><a href="#How-do-‘I’-make-my-own-Happy-git-trees" class="headerlink" title="How do ‘I’ make my own Happy (git) trees?"></a>How do ‘I’ make my own Happy (git) trees?</h4><p>Another AMAZING question! You too can have happy little (git) trees, just follow the guidelines below:</p>
+<ul>
+<li>If you are working on a feature that takes more than one commit to implement (you are keeping small commits, right?), make a git branch <code>git checkout -b &lt;branch_name&gt;</code> and do all of your coding on there.</li>
+<li>Before you are ready to merge it back into master, rebase it off of master <code>git fetch &amp;&amp; git rebase origin/master</code>. <ul>
+<li>Essentially what a rebase does (if you do not already know) is rewrite your branch’s git history by removing your commits, updating your branch so that it’s the same as <code>master</code> then replaying your commits one at a time on top of the new <code>HEAD</code>. <strong>Note:</strong> For a more complete visual explanation of <code>git rebase</code> please see <a href="http://git-scm.com/book/en/v2/Git-Branching-Rebasing" target="_blank" rel="external">this</a>.</li>
+</ul>
+</li>
+<li>When you are ready to merge your feature branch back into <code>master</code>, you can check out master <code>git checkout master</code>, update master via <code>git rebase origin/master</code>, and merge your branch using the “no fast forward” option <code>git merge --no-ff &lt;branch_name&gt;</code><ul>
+<li>What the <code>--no-ff</code> option does is not replay your commits back onto master, but instead makes a merge commit of all the changes in your branch (<em>It should be noted that this is what a GitHub Pull-request does</em>) </li>
+</ul>
+</li>
+</ul>
+<h4 id="A-bit-more-about-git-rebase-and-conflicts"><a href="#A-bit-more-about-git-rebase-and-conflicts" class="headerlink" title="A bit more about git rebase and conflicts"></a>A bit more about <code>git rebase</code> and conflicts</h4><p>Often, if you are working on a team, you will have conflicts when you rebase your branch from <code>master</code>. This is fine–do not panic–it just means that another person updated the same code you did and merged it in before you. What will happen then is the rebase will stop in the middle and you will have to manually fix the conflicts. If you type in <code>git status</code> it will show you which files have conflicts, you can simply open them and see which changes you made that are in conflict with the changes on master (which will be denoted with <code>&lt;&lt;&lt;&lt;&lt;&lt;</code> and <code>========</code>), then add or delete the code necessary to incorporate both changes in the code (if necessary). Once you are done fixing the conflicts (this includes deleting the <code>&lt;&lt;&lt;&lt;</code> and <code>====</code> mark up), go back to the command line and type <code>git add .</code> then <code>git rebase --continue</code> to continue along your path to having a happy (git) tree.</p>
+<p>It is for this reason that if I am working on a feature branch, I rebase it after almost every commit, just to make sure I am kept up to date with <code>master</code>. I don’t like fixing conflicts, and this ensures that I have as few of them as possible at one time.</p>
+<h4 id="Now-a-bit-more-about-GitHub-and-rebasing"><a href="#Now-a-bit-more-about-GitHub-and-rebasing" class="headerlink" title="Now, a bit more about GitHub and rebasing"></a>Now, a bit more about GitHub and rebasing</h4><p>If you are like me, you use GitHub to store your code, and you use pull requests on GitHub to have someone review your code (you are having someone review your code, <a href="http://www.intridea.com/blog/2014/8/12/on-code-cleanliness-and-readability" target="_blank" rel="external">right?</a>). In order to take advantage of GitHub <em>and</em> <code>git rebase</code> you will need to rebase your branches before you make a pull request, otherwise you could end up with a spaghetti like tree as shown above.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jeffsaracco.com/Happy-git-Trees/" data-id="cixlwcum800030vjt4pcl63sj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-On-Code-Cleanliness-and-Readability" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/On-Code-Cleanliness-and-Readability/" class="article-date">
+  <time datetime="2014-10-09T13:15:50.000Z" itemprop="datePublished">2014-10-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/On-Code-Cleanliness-and-Readability/">On Code Cleanliness and Readability</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em> Originally published at <a href="http://www.intridea.com/blog/2014/8/12/on-code-cleanliness-and-readability" target="_blank" rel="external">www.intridea.com</a></em></p>
+<blockquote>
+<p>Programs must be written for people to read, and only incidentally for machines to execute. <br>— Abelson / Sussman</p>
+</blockquote>
+<p>I like my code so clean you could eat off of it (if you could eat off of code). When working on a codebase I’m ruthless about deleting unused code, unnecessary comments, debugging statements, etc. Yes, it may be painstakingly detailed, but this is all a benefit to my future self, my coworkers and anyone who reviews my code in the future.</p>
+<p>When doing a code review of a pull request, I make notes of all the places where code could be cleaner; I also expect the same to be done for me. If I’m pairing, I make sure we do code reviews of every line of a commit before making the commit. I run a tight ship, and I appreciate when my coworkers do the same.</p>
+<p>It’s just common sense; a clean codebase, free of cruft, is easier to read and understand. A codebase that is easy to read and understand is easier to debug, extend, and modify. Ultimately, a clean codebase makes for happy developers.</p>
+<h2 id="What-is-“clean”-code"><a href="#What-is-“clean”-code" class="headerlink" title="What is “clean” code?"></a>What is “clean” code?</h2><p>Code that is “clean” is code that is written to be read and understood with relative ease. You could say this is code written with the reader in mind. Every person and every organization has their own definition for what exactly clean code is, so I won’t be giving explicit examples. What is important is to find some common ground on a project and all stick to it.</p>
+<p>Every developer has heard the old saying that goes something like “Always code as if the person maintaining it is a maniac serial killer and knows where you live”. With respect to that, clean code is code that keeps you safe.</p>
+<h2 id="Rules-for-organization"><a href="#Rules-for-organization" class="headerlink" title="Rules for organization"></a>Rules for organization</h2><p>Everyone in an organization has their own rules for how code should be organized. It doesn’t matter all that much what these rules are, so long as everyone in the organization can agree on some set of rules and everyone follows them.</p>
+<p>If you do not have some rules I suggest listening to the ruby rogues podcast episode in which Sandi Metz discussed some rules for keeping code clean (full transcript here).</p>
+<p>They are:</p>
+<ul>
+<li>Your class can be no longer than 100 lines of code.</li>
+<li>Your methods can be no longer than five lines of code.</li>
+<li>You can pass no more than four parameters and you can’t just make it one big hash.</li>
+<li>Your controller (in a Rails app, when a call comes into your controller) can only instantiate one object to do whatever it is that needs to be done.</li>
+</ul>
+<p>Note that these rules are not really <em>rules</em> but more like guidelines. They are there to guide you when you don’t know where to begin with writing clean code; they are there if you have no rules; they are there as a conversation starter within your organization.</p>
+<p>To quote Charles Max Wood from the Ruby Rogues episode regarding the rules:</p>
+<blockquote>
+<p>So, one thing that really strikes me with these rules is that for the most part, if you really try, you should be able to follow them. [If you say] “Oh well, I’m sure I can find an instance that breaks this rule.” The whole point is when you break the rule, you should be able to explain exactly why you need to break the rule. In that way, then you can justify what you’re doing. But otherwise, you’re not forced to think about what you’re coding and that’s really what the issue is.</p>
+</blockquote>
+<h2 id="Style-Guide"><a href="#Style-Guide" class="headerlink" title="Style Guide"></a>Style Guide</h2><p>A style guide goes hand in hand with code rules, such as those defined above. A style guide, however, covers a much greater set of situations. I think the guidelines defined in a style guide are just as important. If everyone codes using their own style (say 4 space or hard tabs instead of 2 space tabs) on a project, it makes the cognitive overhead that much greater from file to file. If I have a standard style that I know the code will conform to, it makes it that much easier to scan the code and figure out what is going on.</p>
+<h3 id="Ruby-style-guide"><a href="#Ruby-style-guide" class="headerlink" title="Ruby style guide"></a>Ruby style guide</h3><p>At Intridea, we have a Ruby style guide that we follow to make sure that the code we write all follows the same convention. (you can find it at Ruby Style Guide). This is a non-confrontational way to let your developers know there is a standard for the way their code should look when they are writing it, you are reviewing it, or you are both writing it via pairing.</p>
+<h3 id="Rspec-style-guide"><a href="#Rspec-style-guide" class="headerlink" title="Rspec style guide"></a>Rspec style guide</h3><p>It is not only important to keep your ruby and rails code adhering to a consistent style, but also it is important that everyone write their specs in a consistent way. I suggest using a resource like betterspecs.org as a starting point for a conversation about how you want tests to be written.</p>
+<p>If you want to differ from what is proposed on that page, it is open source on github here. So you can fork it for your organization and make any changes you would like.</p>
+<h2 id="Humbleness-and-code-reviews"><a href="#Humbleness-and-code-reviews" class="headerlink" title="Humbleness and code reviews"></a>Humbleness and code reviews</h2><p>The best way to fight against spaghetti code, or a big ball of mud, is to have someone review your code, whether through pair programming or an explicit code review (a git pull request being most common these days).</p>
+<p>It’s important to remember, don’t take comments personally, criticisms of code are not criticisms of the person. Critiques of code logic or style should be looked at as a moment in which you can grow as a developer. You may not agree with the examination of your code, but it will at least spark a conversation in which case all parties can see each others viewpoints and come to a consensus of what the end result should be.</p>
+<p>On more than one occasion I have come across a piece of code that I thought could have been a bit cleaner, or refactored differently, and thought “oh man, I get to correct someone!” Only to then check the author through git blame, and realize it was written by me. My point is that no one is perfect and change isn’t going to happen overnight; it takes time and deliberate effort. You should look at comments regarding code organization or style not as an attack, but as an effort to make the end result better for everyone.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jeffsaracco.com/On-Code-Cleanliness-and-Readability/" data-id="cixlwcunl00050vjtdv50pqhw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Running-Heroku-shell-commands-from-a-Rake-task" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Running-Heroku-shell-commands-from-a-Rake-task/" class="article-date">
+  <time datetime="2014-06-27T13:17:35.000Z" itemprop="datePublished">2014-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Running-Heroku-shell-commands-from-a-Rake-task/">Running Heroku shell commands from a Rake task</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Running an app on Heroku has many benefits, most of which I will not go into here.</p>
+<p>I was trying to make a rake task to pull down my latest backup from the <a href="https://addons.heroku.com/pgbackups" target="_blank" rel="external">pgbackups Heroku addon</a>, as well as restore it locally.</p>
+<p>My rake task looked something like this:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">namespace <span class="symbol">:db</span> <span class="keyword">do</span></div><div class="line">  desc <span class="string">"Fetch the latest backup from heroku"</span></div><div class="line">  task <span class="symbol">:fetch</span> =&gt; [<span class="symbol">:environment</span>] <span class="keyword">do</span></div><div class="line">    app = <span class="string">"&lt;YOU PRODUCTION APP HERE&gt;"</span></div><div class="line">    url = <span class="string">`heroku pgbackups:url -a <span class="subst">#&#123;app&#125;</span>`</span></div><div class="line">    db_prefix = app.gsub(<span class="string">'-'</span>,<span class="string">'_'</span>)</div><div class="line">    fname = <span class="string">"<span class="subst">#&#123;db_prefix&#125;</span>_<span class="subst">#&#123;Time.now.strftime(<span class="string">"%Y%m%d"</span>)&#125;</span>.postgres"</span></div><div class="line">    puts <span class="string">"curl -o <span class="subst">#&#123;fname&#125;</span> '<span class="subst">#&#123;url&#125;</span>'"</span></div><div class="line">    <span class="string">`curl -o <span class="subst">#&#123;fname&#125;</span> "<span class="subst">#&#123;url&#125;</span>"`</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  desc <span class="string">"Import a dbfile into the development database on the local system"</span></div><div class="line">  task <span class="symbol">:import</span> =&gt; [<span class="symbol">:environment</span>] <span class="keyword">do</span></div><div class="line">    dbfile = ENV[<span class="string">'dbfile'</span>]</div><div class="line">    <span class="keyword">if</span> dbfile.blank? <span class="params">||</span> !File.exists?(dbfile)</div><div class="line">      puts <span class="string">"You need to specify the database file to import with dbfile=&lt;filename&gt;"</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">      <span class="string">`pg_restore --verbose --clean --no-acl --no-owner -h localhost -d &lt;YOUR LOCAL DB HERE&gt; <span class="subst">#&#123;dbfile&#125;</span>`</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  desc <span class="string">"Sanitize user data"</span></div><div class="line">  task <span class="symbol">:sanitize_user_data</span> =&gt; [<span class="symbol">:environment</span>] <span class="keyword">do</span></div><div class="line">    User.all.each <span class="keyword">do</span> <span class="params">|u|</span></div><div class="line">      u.email = <span class="string">"<span class="subst">#&#123;u.email&#125;</span>.fake"</span></div><div class="line">      u.password = <span class="string">'password'</span></div><div class="line">      u.password_confirmation = <span class="string">'password'</span></div><div class="line">      u.save</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>However, whenever I ran it I kept getting errors like</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Gemfile syntax error: (Bundler::GemfileError)</div><div class="line">Gemfile:6: syntax error, unexpected <span class="string">':'</span>, expecting <span class="variable">$end</span></div><div class="line">gem <span class="string">'activeadmin'</span>, github: <span class="string">'gregbell/active_admin'</span>, branch: <span class="string">'rails4'</span></div><div class="line">                          ^</div></pre></td></tr></table></figure>
+<p>I could NOT figure out what was happening. I stumbled upon <a href="https://github.com/heroku/heroku/issues/617" target="_blank" rel="external">an issue on the Heroku github page</a> in which it is suggested to wrap the calls in <code>Bundler.with_clean_env</code> block</p>
+<p>The change was to make the fetch task look like this:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">desc <span class="string">"Fetch the latest backup from heroku"</span></div><div class="line">task <span class="symbol">:fetch</span> =&gt; [<span class="symbol">:environment</span>] <span class="keyword">do</span></div><div class="line">  Bundler.with_clean_env <span class="keyword">do</span></div><div class="line">    app = <span class="string">"&lt;YOU PRODUCTION APP HERE&gt;"</span></div><div class="line">    url = <span class="string">`heroku pgbackups:url -a <span class="subst">#&#123;app&#125;</span>`</span></div><div class="line">    db_prefix = app.gsub(<span class="string">'-'</span>,<span class="string">'_'</span>)</div><div class="line">    fname = <span class="string">"<span class="subst">#&#123;db_prefix&#125;</span>_<span class="subst">#&#123;Time.now.strftime(<span class="string">"%Y%m%d"</span>)&#125;</span>.postgres"</span></div><div class="line">    puts <span class="string">"curl -o <span class="subst">#&#123;fname&#125;</span> '<span class="subst">#&#123;url&#125;</span>'"</span></div><div class="line">    <span class="string">`curl -o <span class="subst">#&#123;fname&#125;</span> "<span class="subst">#&#123;url&#125;</span>"`</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>All is well now and I can backup my files successfully from Heroku.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/" data-id="cixlwcunp00070vjtmfgdsizi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ruby-on-Rails-polymorphic-user-model-with-devise-authentication" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Ruby-on-Rails-polymorphic-user-model-with-devise-authentication/" class="article-date">
+  <time datetime="2014-06-26T13:17:35.000Z" itemprop="datePublished">2014-06-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Ruby-on-Rails-polymorphic-user-model-with-devise-authentication/">Ruby on Rails polymorphic user model with devise authentication</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>When modeling my application I have two types of users that have a polymorphic association to the user model. Such as:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ActiveRecord::Base</span></div><div class="line">    belongs_to <span class="symbol">:profileable</span>, <span class="symbol">:polymorphic</span> =&gt; <span class="literal">true</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User_Type_1</span> &lt; ActiveRecord::Base</span></div><div class="line">    has_one <span class="symbol">:user</span>, <span class="symbol">:as</span> =&gt; <span class="symbol">:profileable</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User_Type_2</span> &lt; ActiveRecord::Base</span></div><div class="line">    has_one <span class="symbol">:user</span>, <span class="symbol">:as</span> =&gt; <span class="symbol">:profileable</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>The reason I did this, instead of an STI, is because <code>User_Type_1</code> has something like 4 fields and <code>User_Type_2</code> has something like 20 fields and I didn’t want the user table to have so many fields (yes 24-ish fields is not a lot but I’d rather not have ~20 fields empty most of the time)</p>
+<p>The problem I was facing at this point was I want the sign up form to only be used to sign up users of type <code>User_Type_1</code> but the sign in form to be used to both. (I will have an admin side of the application which will create users of <code>User_Type_2</code>)</p>
+<p>I knew I can use the <code>after_sign_in_path_for(resource)</code> override in <code>AppicationController</code> somehow to redirect to the right part of the site on sign in. Something like:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">after_sign_in_path_for</span><span class="params">(resource)</span></span></div><div class="line">    <span class="keyword">case</span> current_user.profileable_type</div><div class="line">    <span class="keyword">when</span> <span class="string">"UserType1"</span></div><div class="line">        <span class="keyword">return</span> user_type_1_index_path</div><div class="line">    <span class="keyword">when</span> <span class="string">"UserType2"</span></div><div class="line">        <span class="keyword">return</span> user_type_1_index_path</div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>To achieve what I wanted here I just created a normal form for the <code>User_Type_1</code> with nested attributes for <code>User</code> and had it post to the <code>UserType1Controller</code>:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">= form_for <span class="symbol">:user_type_1</span> <span class="keyword">do</span> <span class="params">|f|</span></div><div class="line">  = f.label <span class="symbol">:first_name</span></div><div class="line">  = f.text_field <span class="symbol">:first_name</span></div><div class="line">  = f.label <span class="symbol">:last_name</span></div><div class="line">  = f.text_field <span class="symbol">:last_name</span></div><div class="line">  = f.label <span class="symbol">:phone_number</span></div><div class="line">  = f.text_field <span class="symbol">:phone_number</span></div><div class="line">  = fields_for <span class="symbol">:user</span> <span class="keyword">do</span> <span class="params">|user_fields|</span></div><div class="line">    = user_fields.label <span class="symbol">:email</span></div><div class="line">    = user_fields.email_field <span class="symbol">:email</span></div><div class="line">    = user_fields.label <span class="symbol">:password</span></div><div class="line">    = user_fields.password_field <span class="symbol">:password</span></div><div class="line">    = user_fields.label <span class="symbol">:password_confirmation</span></div><div class="line">    = user_fields.password_field <span class="symbol">:password_confirmation</span></div><div class="line">  = f.submit</div></pre></td></tr></table></figure>
+<p>Then saved both objects and called the <code>sign_in_and_redirect</code> helper from Devise</p>
+<pre><code class="ruby"><span class="class"><span class="keyword">class</span> <span class="title">UserType1Controller</span> &lt; ApplicationController</span>
+    ...
+    <span class="function"><span class="keyword">def</span> <span class="title">create</span></span>
+        @user = User.new(params[<span class="symbol">:user</span>])
+        @user_type_1 = UserType1.new(params[<span class="symbol">:patron</span>])
+        @user.profileable = @user_type_1
+        @user_type_1.save
+        @user.save
+        sign_in_and_redirect @user
+    <span class="keyword">end</span>
+    ...
+ <span class="keyword">end</span>
+</code></pre>
+<p>Then the <code>after_sign_in_path_for</code> method from above sent it to the right place and it was all good.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jeffsaracco.com/Ruby-on-Rails-polymorphic-user-model-with-devise-authentication/" data-id="cixlwcunn00060vjt1rrzamal" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Improvements-to-BigVimbox-com/">Improvements to BigVimbox.com</a>
+          </li>
+        
+          <li>
+            <a href="/Happy-git-Trees/">Happy (git) Trees</a>
+          </li>
+        
+          <li>
+            <a href="/On-Code-Cleanliness-and-Readability/">On Code Cleanliness and Readability</a>
+          </li>
+        
+          <li>
+            <a href="/Running-Heroku-shell-commands-from-a-Rake-task/">Running Heroku shell commands from a Rake task</a>
+          </li>
+        
+          <li>
+            <a href="/Ruby-on-Rails-polymorphic-user-model-with-devise-authentication/">Ruby on Rails polymorphic user model with devise authentication</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Jeff Saracco<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Happy (git) Trees | Jeff Saracco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="originally posted on the Intridea blog here: http://www.intridea.com/blog/2014/12/4/happy-git-trees
+
+We all know Bob Ross (above) and his fascination with “Happy Little Trees” (or maybe that’s my fasc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Happy (git) Trees">
+<meta property="og:url" content="http://jeffsaracco.com/Happy-git-Trees/index.html">
+<meta property="og:site_name" content="Jeff Saracco">
+<meta property="og:description" content="originally posted on the Intridea blog here: http://www.intridea.com/blog/2014/12/4/happy-git-trees
+
+We all know Bob Ross (above) and his fascination with “Happy Little Trees” (or maybe that’s my fasc">
+<meta property="og:image" content="http://3.bp.blogspot.com/-euwIyl4tzDE/UjYU3GBaLgI/AAAAAAAAAQo/3V1b37kuISI/s1600/o-BOB-ROSS-facebook.jpg">
+<meta property="og:image" content="https://i.stack.imgur.com/r1wP7.png">
+<meta property="og:image" content="https://dl.dropboxusercontent.com/u/539427/Screenshot%202014-11-20%2014.59.44.png">
+<meta property="og:updated_time" content="2017-01-06T14:28:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Happy (git) Trees">
+<meta name="twitter:description" content="originally posted on the Intridea blog here: http://www.intridea.com/blog/2014/12/4/happy-git-trees
+
+We all know Bob Ross (above) and his fascination with “Happy Little Trees” (or maybe that’s my fasc">
+<meta name="twitter:image" content="http://3.bp.blogspot.com/-euwIyl4tzDE/UjYU3GBaLgI/AAAAAAAAAQo/3V1b37kuISI/s1600/o-BOB-ROSS-facebook.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Jeff Saracco" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jeff Saracco</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://jeffsaracco.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Happy-git-Trees" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Happy-git-Trees/" class="article-date">
+  <time datetime="2014-12-04T14:12:06.000Z" itemprop="datePublished">2014-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Happy (git) Trees
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>originally posted on the Intridea blog here: <a href="http://www.intridea.com/blog/2014/12/4/happy-git-trees" target="_blank" rel="external">http://www.intridea.com/blog/2014/12/4/happy-git-trees</a></em></p>
+<p><img src="http://3.bp.blogspot.com/-euwIyl4tzDE/UjYU3GBaLgI/AAAAAAAAAQo/3V1b37kuISI/s1600/o-BOB-ROSS-facebook.jpg" alt="Bob Ross"></p>
+<p><br>We all know Bob Ross (above) and his fascination with “Happy Little Trees” (or maybe that’s my fascination). In any case, we can all take some advice from Bob and keep our Git trees happy.</p>
+<p>If you took a look at your current project’s git tree (through a tool maybe like <a href="http://gitx.frim.nl/" target="_blank" rel="external">Gitx</a>) I bet it would look something like this: </p>
+<p><img src="https://i.stack.imgur.com/r1wP7.png" alt="Git tree"></p>
+<p>Now I don’t know about you, but that is really hard for me to follow. I can get the general picture, that there are some branches that merged back into master, but then there’s some branching off of branches and merges between branches; I can’t really tell what story the git tree is trying to tell.</p>
+<h4 id="Why-do-we-care-about-“Happy-Trees”"><a href="#Why-do-we-care-about-“Happy-Trees”" class="headerlink" title="Why do we care about “Happy Trees”?"></a>Why do we care about “Happy Trees”?</h4><p>It is my view of git that all of your commits should tell a story of new functionality. This lets your coworkers or, as in the case of Intridea, clients see very plainly the set of commits that led to a feature being added to the application. It potentially lets less experienced developers see what steps you took to add a feature, and shows your train of thought on how you went from 0 to feature (hero).</p>
+<p>Essentially, keeping a happy and clean git tree is about communication.</p>
+<h4 id="What-does-a-Happy-git-tree-look-like"><a href="#What-does-a-Happy-git-tree-look-like" class="headerlink" title="What does a Happy (git) tree look like?"></a>What does a Happy (git) tree look like?</h4><p>Great question! Everyone has their own opinions on what a happy and clean git tree looks like (well, some have no opinion at all); this is my opinion on what a happy and clean tree might look like:</p>
+<p><img src="https://dl.dropboxusercontent.com/u/539427/Screenshot%202014-11-20%2014.59.44.png" alt="Happy (git) Tree"></p>
+<p>I created this by just initializing a blank git repository and making some commits on master and two different branches. As you can see, it’s clearly communicated what work occured on the branch and what commits happened directly on master. This makes it very easy to track down a potential bug, and which commit or merge may have caused it. Also, this makes it very easy to revert an entire feature should it no longer be wanted or if it’s causing bugs. All you need to do is revert the merge commit and like magic, the feature is gone.</p>
+<h4 id="How-do-‘I’-make-my-own-Happy-git-trees"><a href="#How-do-‘I’-make-my-own-Happy-git-trees" class="headerlink" title="How do ‘I’ make my own Happy (git) trees?"></a>How do ‘I’ make my own Happy (git) trees?</h4><p>Another AMAZING question! You too can have happy little (git) trees, just follow the guidelines below:</p>
+<ul>
+<li>If you are working on a feature that takes more than one commit to implement (you are keeping small commits, right?), make a git branch <code>git checkout -b &lt;branch_name&gt;</code> and do all of your coding on there.</li>
+<li>Before you are ready to merge it back into master, rebase it off of master <code>git fetch &amp;&amp; git rebase origin/master</code>. <ul>
+<li>Essentially what a rebase does (if you do not already know) is rewrite your branch’s git history by removing your commits, updating your branch so that it’s the same as <code>master</code> then replaying your commits one at a time on top of the new <code>HEAD</code>. <strong>Note:</strong> For a more complete visual explanation of <code>git rebase</code> please see <a href="http://git-scm.com/book/en/v2/Git-Branching-Rebasing" target="_blank" rel="external">this</a>.</li>
+</ul>
+</li>
+<li>When you are ready to merge your feature branch back into <code>master</code>, you can check out master <code>git checkout master</code>, update master via <code>git rebase origin/master</code>, and merge your branch using the “no fast forward” option <code>git merge --no-ff &lt;branch_name&gt;</code><ul>
+<li>What the <code>--no-ff</code> option does is not replay your commits back onto master, but instead makes a merge commit of all the changes in your branch (<em>It should be noted that this is what a GitHub Pull-request does</em>) </li>
+</ul>
+</li>
+</ul>
+<h4 id="A-bit-more-about-git-rebase-and-conflicts"><a href="#A-bit-more-about-git-rebase-and-conflicts" class="headerlink" title="A bit more about git rebase and conflicts"></a>A bit more about <code>git rebase</code> and conflicts</h4><p>Often, if you are working on a team, you will have conflicts when you rebase your branch from <code>master</code>. This is fine–do not panic–it just means that another person updated the same code you did and merged it in before you. What will happen then is the rebase will stop in the middle and you will have to manually fix the conflicts. If you type in <code>git status</code> it will show you which files have conflicts, you can simply open them and see which changes you made that are in conflict with the changes on master (which will be denoted with <code>&lt;&lt;&lt;&lt;&lt;&lt;</code> and <code>========</code>), then add or delete the code necessary to incorporate both changes in the code (if necessary). Once you are done fixing the conflicts (this includes deleting the <code>&lt;&lt;&lt;&lt;</code> and <code>====</code> mark up), go back to the command line and type <code>git add .</code> then <code>git rebase --continue</code> to continue along your path to having a happy (git) tree.</p>
+<p>It is for this reason that if I am working on a feature branch, I rebase it after almost every commit, just to make sure I am kept up to date with <code>master</code>. I don’t like fixing conflicts, and this ensures that I have as few of them as possible at one time.</p>
+<h4 id="Now-a-bit-more-about-GitHub-and-rebasing"><a href="#Now-a-bit-more-about-GitHub-and-rebasing" class="headerlink" title="Now, a bit more about GitHub and rebasing"></a>Now, a bit more about GitHub and rebasing</h4><p>If you are like me, you use GitHub to store your code, and you use pull requests on GitHub to have someone review your code (you are having someone review your code, <a href="http://www.intridea.com/blog/2014/8/12/on-code-cleanliness-and-readability" target="_blank" rel="external">right?</a>). In order to take advantage of GitHub <em>and</em> <code>git rebase</code> you will need to rebase your branches before you make a pull request, otherwise you could end up with a spaghetti like tree as shown above.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jeffsaracco.com/Happy-git-Trees/" data-id="cixlwcum800030vjt4pcl63sj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Improvements-to-BigVimbox-com/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Improvements to BigVimbox.com
+        
+      </div>
+    </a>
+  
+  
+    <a href="/On-Code-Cleanliness-and-Readability/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">On Code Cleanliness and Readability</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Improvements-to-BigVimbox-com/">Improvements to BigVimbox.com</a>
+          </li>
+        
+          <li>
+            <a href="/Happy-git-Trees/">Happy (git) Trees</a>
+          </li>
+        
+          <li>
+            <a href="/On-Code-Cleanliness-and-Readability/">On Code Cleanliness and Readability</a>
+          </li>
+        
+          <li>
+            <a href="/Running-Heroku-shell-commands-from-a-Rake-task/">Running Heroku shell commands from a Rake task</a>
+          </li>
+        
+          <li>
+            <a href="/Ruby-on-Rails-polymorphic-user-model-with-devise-authentication/">Ruby on Rails polymorphic user model with devise authentication</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Jeff Saracco<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
