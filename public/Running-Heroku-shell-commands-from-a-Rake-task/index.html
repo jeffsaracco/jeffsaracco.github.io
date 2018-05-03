@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Running an app on Heroku has many benefits, most of which I will not go into here. I was trying to make a rake task to pull down my latest backup from the pgbackups Heroku addon, as well as restore it">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Running Heroku shell commands from a Rake task">
+<meta property="og:url" content="https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/index.html">
+<meta property="og:site_name" content="Jeff Saracco">
+<meta property="og:description" content="Running an app on Heroku has many benefits, most of which I will not go into here. I was trying to make a rake task to pull down my latest backup from the pgbackups Heroku addon, as well as restore it">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-03T12:36:12.669Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Running Heroku shell commands from a Rake task">
+<meta name="twitter:description" content="Running an app on Heroku has many benefits, most of which I will not go into here. I was trying to make a rake task to pull down my latest backup from the pgbackups Heroku addon, as well as restore it">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="https://www.gravatar.com/avatar/5e4982b51bfec65629e8768b954488d6?s=16">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Running Heroku shell commands from a Rake task</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/On-Code-Cleanliness-and-Readability/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/Ruby-on-Rails-polymorphic-user-model-with-devise-authentication/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&text=Running Heroku shell commands from a Rake task"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&title=Running Heroku shell commands from a Rake task"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&is_video=false&description=Running Heroku shell commands from a Rake task"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Running Heroku shell commands from a Rake task&body=Check out this article: https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&title=Running Heroku shell commands from a Rake task"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&title=Running Heroku shell commands from a Rake task"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&title=Running Heroku shell commands from a Rake task"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&title=Running Heroku shell commands from a Rake task"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&name=Running Heroku shell commands from a Rake task&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Running Heroku shell commands from a Rake task
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Jeff Saracco</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2014-06-27T13:17:35.000Z" itemprop="datePublished">2014-06-27</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Running an app on Heroku has many benefits, most of which I will not go into here.</p>
+<p>I was trying to make a rake task to pull down my latest backup from the <a href="https://addons.heroku.com/pgbackups" target="_blank" rel="noopener">pgbackups Heroku addon</a>, as well as restore it locally.</p>
+<p>My rake task looked something like this:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="symbol">:db</span> <span class="keyword">do</span></span><br><span class="line">  desc <span class="string">"Fetch the latest backup from heroku"</span></span><br><span class="line">  task <span class="symbol">:fetch</span> =&gt; [<span class="symbol">:environment</span>] <span class="keyword">do</span></span><br><span class="line">    app = <span class="string">"&lt;YOU PRODUCTION APP HERE&gt;"</span></span><br><span class="line">    url = <span class="string">`heroku pgbackups:url -a <span class="subst">#&#123;app&#125;</span>`</span></span><br><span class="line">    db_prefix = app.gsub(<span class="string">'-'</span>,<span class="string">'_'</span>)</span><br><span class="line">    fname = <span class="string">"<span class="subst">#&#123;db_prefix&#125;</span>_<span class="subst">#&#123;Time.now.strftime(<span class="string">"%Y%m%d"</span>)&#125;</span>.postgres"</span></span><br><span class="line">    puts <span class="string">"curl -o <span class="subst">#&#123;fname&#125;</span> '<span class="subst">#&#123;url&#125;</span>'"</span></span><br><span class="line">    <span class="string">`curl -o <span class="subst">#&#123;fname&#125;</span> "<span class="subst">#&#123;url&#125;</span>"`</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  desc <span class="string">"Import a dbfile into the development database on the local system"</span></span><br><span class="line">  task <span class="symbol">:import</span> =&gt; [<span class="symbol">:environment</span>] <span class="keyword">do</span></span><br><span class="line">    dbfile = ENV[<span class="string">'dbfile'</span>]</span><br><span class="line">    <span class="keyword">if</span> dbfile.blank? <span class="params">||</span> !File.exists?(dbfile)</span><br><span class="line">      puts <span class="string">"You need to specify the database file to import with dbfile=&lt;filename&gt;"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="string">`pg_restore --verbose --clean --no-acl --no-owner -h localhost -d &lt;YOUR LOCAL DB HERE&gt; <span class="subst">#&#123;dbfile&#125;</span>`</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  desc <span class="string">"Sanitize user data"</span></span><br><span class="line">  task <span class="symbol">:sanitize_user_data</span> =&gt; [<span class="symbol">:environment</span>] <span class="keyword">do</span></span><br><span class="line">    User.all.each <span class="keyword">do</span> <span class="params">|u|</span></span><br><span class="line">      u.email = <span class="string">"<span class="subst">#&#123;u.email&#125;</span>.fake"</span></span><br><span class="line">      u.password = <span class="string">'password'</span></span><br><span class="line">      u.password_confirmation = <span class="string">'password'</span></span><br><span class="line">      u.save</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>However, whenever I ran it I kept getting errors like</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Gemfile syntax error: (Bundler::GemfileError)</span><br><span class="line">Gemfile:6: syntax error, unexpected <span class="string">':'</span>, expecting <span class="variable">$end</span></span><br><span class="line">gem <span class="string">'activeadmin'</span>, github: <span class="string">'gregbell/active_admin'</span>, branch: <span class="string">'rails4'</span></span><br><span class="line">                          ^</span><br></pre></td></tr></table></figure>
+<p>I could NOT figure out what was happening. I stumbled upon <a href="https://github.com/heroku/heroku/issues/617" target="_blank" rel="noopener">an issue on the Heroku github page</a> in which it is suggested to wrap the calls in <code>Bundler.with_clean_env</code> block</p>
+<p>The change was to make the fetch task look like this:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">desc <span class="string">"Fetch the latest backup from heroku"</span></span><br><span class="line">task <span class="symbol">:fetch</span> =&gt; [<span class="symbol">:environment</span>] <span class="keyword">do</span></span><br><span class="line">  Bundler.with_clean_env <span class="keyword">do</span></span><br><span class="line">    app = <span class="string">"&lt;YOU PRODUCTION APP HERE&gt;"</span></span><br><span class="line">    url = <span class="string">`heroku pgbackups:url -a <span class="subst">#&#123;app&#125;</span>`</span></span><br><span class="line">    db_prefix = app.gsub(<span class="string">'-'</span>,<span class="string">'_'</span>)</span><br><span class="line">    fname = <span class="string">"<span class="subst">#&#123;db_prefix&#125;</span>_<span class="subst">#&#123;Time.now.strftime(<span class="string">"%Y%m%d"</span>)&#125;</span>.postgres"</span></span><br><span class="line">    puts <span class="string">"curl -o <span class="subst">#&#123;fname&#125;</span> '<span class="subst">#&#123;url&#125;</span>'"</span></span><br><span class="line">    <span class="string">`curl -o <span class="subst">#&#123;fname&#125;</span> "<span class="subst">#&#123;url&#125;</span>"`</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>All is well now and I can backup my files successfully from Heroku.</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&text=Running Heroku shell commands from a Rake task"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&title=Running Heroku shell commands from a Rake task"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&is_video=false&description=Running Heroku shell commands from a Rake task"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Running Heroku shell commands from a Rake task&body=Check out this article: https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&title=Running Heroku shell commands from a Rake task"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&title=Running Heroku shell commands from a Rake task"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&title=Running Heroku shell commands from a Rake task"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&title=Running Heroku shell commands from a Rake task"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://jeffsaracco.com/Running-Heroku-shell-commands-from-a-Rake-task/&name=Running Heroku shell commands from a Rake task&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Jeff Saracco
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-17462061-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
